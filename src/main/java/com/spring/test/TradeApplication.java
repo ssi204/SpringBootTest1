@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableJpaAuditing
-@EnableJpaRepositories
 @EnableTransactionManagement
 public class TradeApplication {
     public static void main(String[] args) {

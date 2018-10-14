@@ -1,30 +1,46 @@
 package com.spring.test.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.Past;
+import java.util.Date;
 
 
 @Entity
-@Table(name = "Trade")
-public class User{
+@Table(name = "trade")
+@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class User {
     @Id
     @Column(name = "TradeID", unique = true, nullable = false)
     Long Id;
+
+
     @Column(name = "Price")
     Long price;
+
     @Column(name = "StockName")
     String name;
 
-    public User() {
-    }
-
-    public User(Long id, Long price, String name) {
-        Id = id;
-        this.price = price;
-        this.name = name;
-    }
+    @Column(name ="date")
+    Date date;
 
     @Override
     public String toString() {
@@ -34,28 +50,13 @@ public class User{
                 ", name='" + name + '\'' +
                 '}';
     }
-
-    public Long getId() {
-        return Id;
-    }
-
-    public Long getprice() {
-        return price;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public void setprice(Long price) {
+@JsonIgnore(value=false)
+    public void setPrice(Long price) {
         this.price = price;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @JsonIgnore
+    public Long getPrice() {
+        return price;
     }
 }
