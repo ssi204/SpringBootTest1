@@ -7,6 +7,7 @@ import com.spring.test.repository.BlackListedStocksRepository;
 import com.spring.test.repository.TradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
