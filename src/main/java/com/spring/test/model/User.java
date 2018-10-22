@@ -26,7 +26,7 @@ import java.util.Date;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
     @Id
-    @Generated
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     Integer Id;
 
